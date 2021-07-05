@@ -10,6 +10,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "firebase": "^8.7.0",
     "node-sass": "^6.0.1",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
@@ -43,6 +44,7 @@
     "lint:script": "eslint \"./src/**/*.{js,jsx,ts,tsx}\" --fix",
     "lint:style": "stylelint \"./src/**/*.scss\" --fix",
     "stylelint-check": "stylelint-config-prettier-check",
+    "deploy": "firebase deploy",
     "eject": "react-scripts eject"
   },
   "browserslist": {

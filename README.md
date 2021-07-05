@@ -1,1 +1,1 @@
-# usually app
+# [usually](https://usually.netlify.app/)
