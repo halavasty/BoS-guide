@@ -1,0 +1,37 @@
+$family-primary: 'Underdog', Verdana;
+$family-header: 'MADE Evolve Sans', sans-serif;
+
+$weight-light: 300;
+$weight-normal: 400;
+$weight-bold: 700;
+$weight-slim: 500;
+
+// Colors
+$black: #000;
+$white: #fff;
+$orange-100: #faa72a;
+$orange-200: #ea920f;
+$red-100: #ee3427;
+$gray-100: darken($white, 16%);
+$gray-400: #303030;
+$gray-600: darken($white, 55%);
+$gray-700: #252525;
+$gray-900: #101010;
+$gray-950: #0a0a0a;
+
+$active: $orange-100;
+$primary: $orange-100;
+$hover: $orange-200;
+$text-body: $black;
+$card-hover: $gray-900;
+$disable: $gray-400;
+$border-color: $black;
+
+$media-size: (
+'mobile': 520px,
+'tablet': 768px,
+'desktop': 1280px,
+'fullHD': 1540px,
+);
+$transition: 0.25s;
+$opacity: 0.8;

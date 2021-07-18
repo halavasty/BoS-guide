@@ -1,0 +1,28 @@
+@function weight($key) {
+  @if map-has-key($media-size, $key) {
+    @return map-get($media-size, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $weight .";
+  @return null;
+}
+
+:root {
+  --golden-mean: 1640;
+  @media screen and (max-width: weight('fullHD')) {
+    --golden-mean: 1440;
+  }
+  @media screen and (max-width: weight('desktop')) {
+    --golden-mean: 998;
+  }
+  @media screen and (max-width: weight('tablet')) {
+    --golden-mean: 645;
+  }
+  @media screen and (max-width: weight('mobile')) {
+    --golden-mean: 500;
+  }
+}
+
+@function topx($size) {
+  @return calc(#{$size} / var(--golden-mean) * 100vw);
+}

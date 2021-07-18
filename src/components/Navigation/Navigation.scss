@@ -1,0 +1,14 @@
+.Navigation {
+  &-List {
+    border-bottom: 1px solid;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 20px 0;
+  }
+  &-Item {
+    &_active {
+      font-weight: 700;
+    }
+  }
+}

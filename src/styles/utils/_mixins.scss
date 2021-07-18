@@ -1,0 +1,103 @@
+@mixin fullhd {
+  @media screen and (max-width: weight('fullHD')) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (max-width: weight('desktop')) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: weight('tablet')) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: weight('mobile')) {
+    @content;
+  }
+}
+
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+@mixin square($size) {
+  @include size($size, $size);
+}
+
+@mixin transition {
+  transition: all $transition ease-in-out;
+}
+
+%transition {
+  @include transition;
+}
+
+@mixin button-text {
+  display: inline-flex;
+  font-family: $family-header;
+  font-size: topx(12);
+  letter-spacing: 0.15em;
+  line-height: topx(16);
+  text-align: center;
+  text-transform: uppercase;
+  @extend %transition;
+}
+
+%button-text {
+  @include button-text;
+}
+
+// @mixin control($color: $link, $hover-color: $link-hover){
+//   color: $color;
+//   cursor: pointer;
+//   display: inline-flex;
+//   justify-content: center;
+//   @extend %transition;
+//   &:hover{
+//     color: $hover-color;
+//   }
+//   &:active,
+//   &:focus{
+//     color: $color;
+//     opacity: $opacity;
+//   }
+// }
+
+// %control{
+//   @include control;
+// }
+
+@mixin font-params {
+  font-family: $family-primary;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+%font-params {
+  @include font-params;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &::before {
+    content: ' ';
+    display: block;
+    padding-top: ($height / $width) * 100%;
+    width: 100%;
+  }
+
+  > .content {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

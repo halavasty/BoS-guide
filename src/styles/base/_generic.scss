@@ -1,0 +1,89 @@
+// Тут переопределяется поветение тегов
+$font-size-base: topx(17);
+$line-height-base: topx(28);
+$body-size: $font-size-base;
+$body-background-color: $black;
+$body-family: $family-primary;
+$body-color: $text-body;
+$body-weight: $weight-normal;
+$body-line-height: $line-height-base;
+
+html {
+  background-color: $body-background-color;
+  font-size: $font-size-base;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-size-adjust: 100%;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+input,
+select,
+textarea,
+button {
+  @include font-params;
+}
+
+body {
+  color: $body-color;
+  font-family: $body-family;
+  font-size: $body-size;
+  font-weight: $body-weight;
+  line-height: $body-line-height;
+}
+
+header {
+  text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+input {
+  background: transparent;
+  border: 1px solid $gray-600;
+  box-sizing: border-box;
+  color: $text-body;
+  font-family: $family-header;
+  font-size: topx(17);
+  line-height: topx(20);
+  padding: topx(24) topx(20) topx(8);
+  width: 100%;
+
+  &:hover {
+    border-color: $gray-100;
+  }
+
+  &:active,
+  &:focus {
+    border-color: $active;
+    outline: none;
+  }
+}
+
+a {
+  color: $body-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $active;
+  }
+  strong {
+    color: currentColor;
+  }
+}
