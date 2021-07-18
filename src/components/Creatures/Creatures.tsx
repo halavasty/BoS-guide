@@ -1,39 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { cn } from '@bem-react/classname';
 import './Creatures.scss';
 import { Image } from '../Image';
-import { ImageSchema } from '../Image/ImageSchema';
 import { Effects } from '../Effects';
+import { CreatureSchema } from './CreatureSchema';
+import { CreaturesData, CREATURES_LIST } from './apollo';
 import { EffectSchema } from '../Effects/EffectSchema';
 
 const cnCreatures = cn('Creatures');
-
-interface CreatureSchema {
-  id: string;
-  name: string;
-  icon: ImageSchema;
-  effects: EffectSchema[];
-}
-interface CreaturesData {
-  creatures: CreatureSchema[];
-}
-
-const CREATURES_LIST = gql`
-  {
-    creatures(sort: "id:asc") {
-      id
-      name
-      icon {
-        url
-      }
-      effects {
-        id
-        name
-      }
-    }
-  }
-`;
 
 export const Creatures: React.FC = () => {
   const { loading, error, data } = useQuery<CreaturesData>(CREATURES_LIST);
@@ -52,8 +27,10 @@ export const Creatures: React.FC = () => {
   const onChange = (id: string) => {
     setEffect(id);
     setCreatures(
-      data?.creatures.filter((creature) => {
-        return creature.effects.some((effect) => effect.id === id);
+      data?.creatures.filter((creature: CreatureSchema) => {
+        return creature.effects.some(
+          (effect: EffectSchema) => effect.id === id
+        );
       })
     );
   };
