@@ -4,7 +4,8 @@ import { cn } from '@bem-react/classname';
 import './Creatures.scss';
 import { Image } from '../Image';
 import { ImageSchema } from '../Image/ImageSchema';
-import { Effects, EffectSchema } from '../Effects';
+import { Effects } from '../Effects';
+import { EffectSchema } from '../Effects/EffectSchema';
 
 const cnCreatures = cn('Creatures');
 
