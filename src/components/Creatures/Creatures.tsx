@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { cn } from '@bem-react/classname';
 import './Creatures.scss';
-import { Image } from '../Image';
 import { Effects } from '../Effects';
 import { CreatureSchema } from './CreatureSchema';
 import { CreaturesData, CREATURES_LIST } from './apollo';
 import { EffectSchema } from '../Effects/EffectSchema';
+import { CreatureList } from './CreaturesList';
 
 const cnCreatures = cn('Creatures');
 
 export const Creatures: React.FC = () => {
   const { loading, error, data } = useQuery<CreaturesData>(CREATURES_LIST);
-  const [currentEffect, setEffect] = useState<string>();
+  const [currentEffect, setEffect] = useState<string>('');
   const [creatures, setCreatures] = useState<CreatureSchema[] | undefined>([]);
 
   useEffect(() => {
@@ -35,17 +35,14 @@ export const Creatures: React.FC = () => {
     );
   };
 
+  const onClean = () => {
+    setEffect('');
+  };
+
   return (
     <div className={cnCreatures()}>
-      <Effects onChange={onChange} />
-      <ul className={cnCreatures('List')}>
-        {creatures &&
-          creatures.map((creature: CreatureSchema) => (
-            <li key={creature.id} className={cnCreatures('Item')}>
-              <Image url={creature.icon.url} />
-            </li>
-          ))}
-      </ul>
+      <Effects active={currentEffect} onClean={onClean} onChange={onChange} />
+      {creatures ? <CreatureList creatures={creatures} /> : null}
     </div>
   );
 };

@@ -1,0 +1,11 @@
+.CreaturesList {
+  border-bottom: 1px solid;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  margin: 0;
+  padding: 20px 0;
+
+  &-Item {
+    max-width: 100px;
+  }
+}

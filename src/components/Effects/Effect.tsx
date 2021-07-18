@@ -7,10 +7,12 @@ import { EffectsList } from './EffectList';
 
 export const cnEffects = cn('Effects');
 interface EffectsI {
+  active: string;
   onChange: (id: string) => void;
+  onClean: () => void;
 }
 
-export const Effects: React.FC<EffectsI> = ({ onChange }) => {
+export const Effects: React.FC<EffectsI> = ({ onChange, onClean, active }) => {
   const { loading, error, data } = useQuery<EffectsData>(EFFECTS_LIST);
 
   if (loading) return <p>Loading...</p>;
@@ -20,9 +22,15 @@ export const Effects: React.FC<EffectsI> = ({ onChange }) => {
     <div className={cnEffects()}>
       <header>
         Фильтр по эффектам
-        <button type="button">сбросить</button>
+        <button onClick={onClean} type="button">
+          сбросить
+        </button>
       </header>
-      <EffectsList effects={data?.effects} onChange={onChange} />
+      <EffectsList
+        active={active}
+        effects={data?.effects}
+        onChange={onChange}
+      />
     </div>
   ) : null;
 };
