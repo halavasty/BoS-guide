@@ -1,2 +1,5 @@
 build
 src/reportWebVitals.ts
+apollo.config.js
+graphql.config.js
+__generated__

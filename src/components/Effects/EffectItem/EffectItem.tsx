@@ -2,29 +2,25 @@ import React from 'react';
 import { cn } from '@bem-react/classname';
 import './EffectItem.scss';
 import { Image } from '../../Image';
-import { ImageSchema } from '../../Image/ImageSchema';
-import { EffectSchema } from '../EffectSchema';
+import { EffectSchema } from './__generated__/Effect.fragment';
 
 export const cnEffectsItem = cn('EffectsItem');
 
-export interface EffectItemSchema extends EffectSchema {
-  id: string;
-  name: string;
-  image: ImageSchema;
+export interface EffectItemSchema {
+  effect: EffectSchema;
   onChange?: () => void;
   className?: string;
 }
 
 export const EffectItem: React.FC<EffectItemSchema> = ({
-  name,
-  image,
+  effect,
   onChange,
   className,
 }) => {
   return (
     <button className={className} type="button" onClick={onChange}>
-      <span className={cnEffectsItem('Label')}>{name}</span>
-      <Image url={image.url} />
+      <span className={cnEffectsItem('Label')}>{effect.name}</span>
+      {effect.image && <Image url={effect.image.url} />}
     </button>
   );
 };

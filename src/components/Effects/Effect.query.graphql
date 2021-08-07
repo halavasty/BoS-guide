@@ -1,0 +1,6 @@
+
+query EffectList {
+   effects(sort: "id:asc") {
+      ...EffectSchema
+    }
+}

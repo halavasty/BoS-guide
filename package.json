@@ -12,6 +12,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "concurrently": "^6.2.0",
     "graphql": "^15.5.1",
     "node-sass": "^6.0.1",
     "prettier": "^2.3.2",
@@ -39,7 +40,17 @@
     "lint-staged": "^11.0.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-sass-guidelines": "^8.0.0"
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "@graphql-codegen/near-operation-file-preset": "^2.0.0",
+    "@graphql-codegen/schema-ast": "^2.0.0",
+    "@graphql-codegen/typescript": "2.0.0",
+    "@graphql-codegen/fragment-matcher": "3.0.0",
+    "@graphql-codegen/typescript-operations": "2.0.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "2.0.0",
+    "@graphql-codegen/typescript-react-apollo": "3.0.0",
+    "@graphql-codegen/typescript-document-nodes": "2.0.0",
+    "@graphql-codegen/introspection": "2.0.0",
+    "@graphql-codegen/cli": "2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -49,7 +60,10 @@
     "lint:style": "stylelint \"./src/**/*.scss\" --fix",
     "stylelint-check": "stylelint-config-prettier-check",
     "deploy": "firebase deploy",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run start\" \"npm run graphql:generate:watch\"",
+    "graphql:generate": "graphql-codegen --config graphql.config.js",
+    "graphql:generate:watch": "graphql-codegen --config graphql.config.js --watch"
   },
   "browserslist": {
     "production": [

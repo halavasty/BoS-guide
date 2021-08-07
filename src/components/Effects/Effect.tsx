@@ -1,9 +1,8 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
 import { cn } from '@bem-react/classname';
-import { EFFECTS_LIST, EffectsData } from './apollo';
+import { useEffectList } from './__generated__/Effect.query';
+import { EffectItem, cnEffectsItem } from './EffectItem';
 import './Effect.scss';
-import { EffectsList } from './EffectList';
 
 export const cnEffects = cn('Effects');
 interface EffectsI {
@@ -13,7 +12,7 @@ interface EffectsI {
 }
 
 export const Effects: React.FC<EffectsI> = ({ onChange, onClean, active }) => {
-  const { loading, error, data } = useQuery<EffectsData>(EFFECTS_LIST);
+  const { loading, error, data } = useEffectList();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -26,11 +25,21 @@ export const Effects: React.FC<EffectsI> = ({ onChange, onClean, active }) => {
           сбросить
         </button>
       </header>
-      <EffectsList
-        active={active}
-        effects={data?.effects}
-        onChange={onChange}
-      />
+      <ul className={cnEffects('List')}>
+        {data.effects &&
+          data.effects.map(
+            (effect) =>
+              effect && (
+                <li key={effect.id}>
+                  <EffectItem
+                    effect={effect}
+                    className={cnEffectsItem({ active: effect.id === active })}
+                    onChange={() => onChange(effect.id)}
+                  />
+                </li>
+              )
+          )}
+      </ul>
     </div>
   ) : null;
 };

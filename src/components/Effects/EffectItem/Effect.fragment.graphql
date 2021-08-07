@@ -1,0 +1,7 @@
+fragment EffectSchema on Effect {
+  id
+  name
+  image {
+    url
+  }
+}
