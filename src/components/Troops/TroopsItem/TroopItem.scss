@@ -1,0 +1,12 @@
+.TroopItem {
+  padding: 0;
+
+  &_active {
+    background: #fefefe;
+    font-weight: 700;
+  }
+
+  &-Label {
+    font-size: 10px;
+  }
+}

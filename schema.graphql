@@ -127,6 +127,24 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
+enum ENUM_TROOP_GRADE {
+  t1
+  t2
+  t3
+  t4
+  t5
+  t6
+  t7
+  t8
+  t9
+}
+
+enum ENUM_TROOP_TYPE {
+  Carrier
+  Guardian
+  Shooter
+}
+
 type Effect {
   _id: ID!
   createdAt: DateTime!
@@ -273,7 +291,7 @@ input LocaleInput {
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = ComponentBlokBestiary | ComponentBlokContent | Creature | CreatureAggregator | CreatureConnection | CreatureConnectionCreatedAt | CreatureConnectionDescription | CreatureConnectionIcon | CreatureConnectionId | CreatureConnectionName | CreatureConnectionPublished_at | CreatureConnectionUpdatedAt | CreatureConnection_id | CreatureGroupBy | Effect | EffectAggregator | EffectConnection | EffectConnectionCreatedAt | EffectConnectionEffect | EffectConnectionId | EffectConnectionImage | EffectConnectionName | EffectConnectionPair | EffectConnectionPublished_at | EffectConnectionUpdatedAt | EffectConnection_id | EffectGroupBy | I18NLocale | Page | PageAggregator | PageConnection | PageConnectionCreatedAt | PageConnectionId | PageConnectionInMenu | PageConnectionLink | PageConnectionName | PageConnectionPublished_at | PageConnectionUpdatedAt | PageConnection_id | PageGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreatedAt | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionSize | UploadFileConnectionUpdatedAt | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileConnection_id | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnection_id | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnection_id | UsersPermissionsUserGroupBy | createCreaturePayload | createEffectPayload | createPagePayload | createRolePayload | createUserPayload | deleteCreaturePayload | deleteEffectPayload | deleteFilePayload | deletePagePayload | deleteRolePayload | deleteUserPayload | updateCreaturePayload | updateEffectPayload | updatePagePayload | updateRolePayload | updateUserPayload
+union Morph = ComponentBlokBestiary | ComponentBlokContent | Creature | CreatureAggregator | CreatureConnection | CreatureConnectionCreatedAt | CreatureConnectionDescription | CreatureConnectionIcon | CreatureConnectionId | CreatureConnectionName | CreatureConnectionPublished_at | CreatureConnectionUpdatedAt | CreatureConnection_id | CreatureGroupBy | Effect | EffectAggregator | EffectConnection | EffectConnectionCreatedAt | EffectConnectionEffect | EffectConnectionId | EffectConnectionImage | EffectConnectionName | EffectConnectionPair | EffectConnectionPublished_at | EffectConnectionUpdatedAt | EffectConnection_id | EffectGroupBy | I18NLocale | Page | PageAggregator | PageConnection | PageConnectionCreatedAt | PageConnectionId | PageConnectionInMenu | PageConnectionLink | PageConnectionName | PageConnectionPublished_at | PageConnectionUpdatedAt | PageConnection_id | PageGroupBy | Troop | TroopAggregator | TroopAggregatorAvg | TroopAggregatorMax | TroopAggregatorMin | TroopAggregatorSum | TroopConnection | TroopConnectionAttack | TroopConnectionCreatedAt | TroopConnectionDefense | TroopConnectionGrade | TroopConnectionHealth | TroopConnectionId | TroopConnectionLoad | TroopConnectionMarch_speed | TroopConnectionMeat_consumption | TroopConnectionName | TroopConnectionPower | TroopConnectionType | TroopConnectionUpdatedAt | TroopConnection_id | TroopGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreatedAt | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionSize | UploadFileConnectionUpdatedAt | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileConnection_id | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnection_id | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnection_id | UsersPermissionsUserGroupBy | createCreaturePayload | createEffectPayload | createPagePayload | createRolePayload | createTroopPayload | createUserPayload | deleteCreaturePayload | deleteEffectPayload | deleteFilePayload | deletePagePayload | deleteRolePayload | deleteTroopPayload | deleteUserPayload | updateCreaturePayload | updateEffectPayload | updatePagePayload | updateRolePayload | updateTroopPayload | updateUserPayload
 
 type Mutation {
   createCreature(input: createCreatureInput): createCreaturePayload
@@ -282,6 +300,7 @@ type Mutation {
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
+  createTroop(input: createTroopInput): createTroopPayload
 
   """Create a new user"""
   createUser(input: createUserInput): createUserPayload
@@ -294,6 +313,7 @@ type Mutation {
 
   """Delete an existing role"""
   deleteRole(input: deleteRoleInput): deleteRolePayload
+  deleteTroop(input: deleteTroopInput): deleteTroopPayload
 
   """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
@@ -310,6 +330,7 @@ type Mutation {
 
   """Update an existing role"""
   updateRole(input: updateRoleInput): updateRolePayload
+  updateTroop(input: updateTroopInput): updateTroopPayload
 
   """Update an existing user"""
   updateUser(input: updateUserInput): updateUserPayload
@@ -430,6 +451,9 @@ type Query {
   """
   roles(limit: Int, publicationState: PublicationState, sort: String, start: Int, where: JSON): [UsersPermissionsRole]
   rolesConnection(limit: Int, sort: String, start: Int, where: JSON): UsersPermissionsRoleConnection
+  troop(id: ID!, publicationState: PublicationState): Troop
+  troops(limit: Int, publicationState: PublicationState, sort: String, start: Int, where: JSON): [Troop]
+  troopsConnection(limit: Int, sort: String, start: Int, where: JSON): TroopConnection
   user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
   users(limit: Int, publicationState: PublicationState, sort: String, start: Int, where: JSON): [UsersPermissionsUser]
   usersConnection(limit: Int, sort: String, start: Int, where: JSON): UsersPermissionsUserConnection
@@ -447,6 +471,180 @@ input RoleInput {
 
 """A time string with format: HH:mm:ss.SSS"""
 scalar Time
+
+type Troop {
+  _id: ID!
+  attack: Int!
+  createdAt: DateTime!
+  defense: Int!
+  grade: ENUM_TROOP_GRADE
+  health: Int!
+  id: ID!
+  load: Int
+  march_speed: Int
+  meat_consumption: Float
+  name: String!
+  power: Float
+  type: ENUM_TROOP_TYPE
+  updatedAt: DateTime!
+}
+
+type TroopAggregator {
+  avg: TroopAggregatorAvg
+  count: Int
+  max: TroopAggregatorMax
+  min: TroopAggregatorMin
+  sum: TroopAggregatorSum
+  totalCount: Int
+}
+
+type TroopAggregatorAvg {
+  attack: Float
+  defense: Float
+  health: Float
+  load: Float
+  march_speed: Float
+  meat_consumption: Float
+  power: Float
+}
+
+type TroopAggregatorMax {
+  attack: Float
+  defense: Float
+  health: Float
+  load: Float
+  march_speed: Float
+  meat_consumption: Float
+  power: Float
+}
+
+type TroopAggregatorMin {
+  attack: Float
+  defense: Float
+  health: Float
+  load: Float
+  march_speed: Float
+  meat_consumption: Float
+  power: Float
+}
+
+type TroopAggregatorSum {
+  attack: Float
+  defense: Float
+  health: Float
+  load: Float
+  march_speed: Float
+  meat_consumption: Float
+  power: Float
+}
+
+type TroopConnection {
+  aggregate: TroopAggregator
+  groupBy: TroopGroupBy
+  values: [Troop]
+}
+
+type TroopConnectionAttack {
+  connection: TroopConnection
+  key: Int
+}
+
+type TroopConnectionCreatedAt {
+  connection: TroopConnection
+  key: DateTime
+}
+
+type TroopConnectionDefense {
+  connection: TroopConnection
+  key: Int
+}
+
+type TroopConnectionGrade {
+  connection: TroopConnection
+  key: String
+}
+
+type TroopConnectionHealth {
+  connection: TroopConnection
+  key: Int
+}
+
+type TroopConnectionId {
+  connection: TroopConnection
+  key: ID
+}
+
+type TroopConnectionLoad {
+  connection: TroopConnection
+  key: Int
+}
+
+type TroopConnectionMarch_speed {
+  connection: TroopConnection
+  key: Int
+}
+
+type TroopConnectionMeat_consumption {
+  connection: TroopConnection
+  key: Float
+}
+
+type TroopConnectionName {
+  connection: TroopConnection
+  key: String
+}
+
+type TroopConnectionPower {
+  connection: TroopConnection
+  key: Float
+}
+
+type TroopConnectionType {
+  connection: TroopConnection
+  key: String
+}
+
+type TroopConnectionUpdatedAt {
+  connection: TroopConnection
+  key: DateTime
+}
+
+type TroopConnection_id {
+  connection: TroopConnection
+  key: ID
+}
+
+type TroopGroupBy {
+  _id: [TroopConnection_id]
+  attack: [TroopConnectionAttack]
+  createdAt: [TroopConnectionCreatedAt]
+  defense: [TroopConnectionDefense]
+  grade: [TroopConnectionGrade]
+  health: [TroopConnectionHealth]
+  id: [TroopConnectionId]
+  load: [TroopConnectionLoad]
+  march_speed: [TroopConnectionMarch_speed]
+  meat_consumption: [TroopConnectionMeat_consumption]
+  name: [TroopConnectionName]
+  power: [TroopConnectionPower]
+  type: [TroopConnectionType]
+  updatedAt: [TroopConnectionUpdatedAt]
+}
+
+input TroopInput {
+  attack: Int!
+  created_by: ID
+  defense: Int!
+  grade: ENUM_TROOP_GRADE
+  health: Int!
+  load: Int
+  march_speed: Int
+  meat_consumption: Float
+  name: String!
+  power: Float
+  type: ENUM_TROOP_TYPE
+  updated_by: ID
+}
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
@@ -858,6 +1056,14 @@ type createRolePayload {
   role: UsersPermissionsRole
 }
 
+input createTroopInput {
+  data: TroopInput
+}
+
+type createTroopPayload {
+  troop: Troop
+}
+
 input createUserInput {
   data: UserInput
 }
@@ -904,6 +1110,14 @@ input deleteRoleInput {
 
 type deleteRolePayload {
   role: UsersPermissionsRole
+}
+
+input deleteTroopInput {
+  where: InputID
+}
+
+type deleteTroopPayload {
+  troop: Troop
 }
 
 input deleteUserInput {
@@ -996,6 +1210,21 @@ input editRoleInput {
   users: [ID]
 }
 
+input editTroopInput {
+  attack: Int
+  created_by: ID
+  defense: Int
+  grade: ENUM_TROOP_GRADE
+  health: Int
+  load: Int
+  march_speed: Int
+  meat_consumption: Float
+  name: String
+  power: Float
+  type: ENUM_TROOP_TYPE
+  updated_by: ID
+}
+
 input editUserInput {
   blocked: Boolean
   confirmationToken: String
@@ -1044,6 +1273,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateTroopInput {
+  data: editTroopInput
+  where: InputID
+}
+
+type updateTroopPayload {
+  troop: Troop
 }
 
 input updateUserInput {

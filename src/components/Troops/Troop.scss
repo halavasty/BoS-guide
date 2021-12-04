@@ -1,0 +1,21 @@
+.Troops {
+  padding: 60px;
+  &-List {
+    border-bottom: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0;
+    padding: 20px 0;
+  }
+  &-Item {
+    max-width: 60px;
+    padding: 0;
+    &_active {
+      font-weight: 700;
+    }
+  }
+  &-Label {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,6 @@
+
+query TroopList {
+   troops(sort: "id:asc") {
+      ...TroopSchema
+   }
+}

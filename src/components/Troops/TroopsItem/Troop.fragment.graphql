@@ -1,0 +1,8 @@
+fragment TroopSchema on Troop {
+  id
+  name
+  attack
+  defense
+  health
+  power
+}
